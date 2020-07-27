@@ -1,0 +1,25 @@
+<div class="container" fxLayout  fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="10px" fxLayoutGap.xs="0">
+    <div class="item item-1" fxFlex="18%" id="sidebar">
+        <span class="material-icons" (click)="getNoticias()">vertical_align_bottom</span>
+        <span id="obtener" (click)="getNoticias()">Obtener noticias</span>
+    </div>
+    <div class="item item-4" fxFlex="82%" id="formulario">
+        <div class="titulo">Noticias</div>
+        <div>
+            <div class="noticias" fxLayout  fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="10px" fxLayoutGap.xs="0" *ngFor="let noticia of noticias; let indice=index">
+                <div class="item item-1" fxFlex="90%">
+                    {{noticia.titulo}}
+                    <br/>
+                    <span class="fecha">{{noticia.fechaPublicacion | date: 'dd/MM/yyyy'}}</span>
+                </div>
+                <div class="item item-4" fxFlex="10%">
+                    {{noticia.likes}} <span class="material-icons" (click)="incrementar(indice)">thumb_up</span>
+                </div>
+            </div>
+            <!-- Al no tener noticias que mostrar muestra el siguiente mensaje. -->
+            <div *ngIf="noticias==null" class="vacio"> Para ver las noticias actualizadas <br/> presione "Obtener noticias". </div>
+        </div>
+    </div>
+</div>
+
+
